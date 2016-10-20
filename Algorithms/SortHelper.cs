@@ -65,7 +65,7 @@ namespace Algorithms
 
         #region QuickSort
 
-        public static void QuickSort(int[] a, int p, int r)
+        public static void QuickSort<T>(T[] a, int p, int r) where T : IComparable
         {
             if (p >= r)
                 return;
@@ -76,12 +76,12 @@ namespace Algorithms
             QuickSort(a, q+1, r);
         }
 
-        private static int Partition(int[] a, int p, int r)
+        private static int Partition<T>(T[] a, int p, int r) where T : IComparable
         {
             var q = p;
             for (var u = p; u < r; u++)
             {
-                if (a[u] <= a[r])
+                if ( a[u].CompareTo(a[r]) < 0 || a[u].CompareTo(a[r]) == 0)
                 {
                     a.ShiftElement(q, u);
                     q++;
