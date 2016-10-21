@@ -5,6 +5,58 @@ namespace Algorithms
 {
     public static class SortHelper
     {
+        #region BubbleSort
+
+        public static void BubbleSort<T>(T[] a) where T : struct, IComparable
+        {
+            var length = a.Length;
+
+            for (var i = 0; i < length; i++)
+            {
+                for (var j = i + 1; j < length; j++)
+                {
+                    if (a[i].CompareTo(a[j]) > 0)
+                    {
+                        var temp = a[i];
+                        a[i] = a[j];
+                        a[j] = temp;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region SelectionSort
+
+        public static void SelectionSort(int[] a)
+        {
+            int min, temp;
+            int length = a.Length;
+
+            for (var i = 0; i < length - 1; i++)
+            {
+                min = i;
+
+                for (var j = i + 1; j < length; j++)
+                {
+                    if (a[j] < a[min])
+                    {
+                        min = j;
+                    }
+                }
+
+                if (min != i)
+                {
+                    temp = a[i];
+                    a[i] = a[min];
+                    a[min] = temp;
+                }
+            }
+        }
+
+        #endregion
+
         #region MergeSort
 
         public static void MergeSort<T>(T[] a, int p, int r) where T : struct, IComparable
